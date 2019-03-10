@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afe22731-4f3f-4ce3-a7c0-a1e98c6bfa49" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/LSTM_Captioning-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/LSTM_Captioning-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/RNN_Captioning-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/RNN_Captioning-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSTM_Captioning.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_Captioning.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RNN_Captioning.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/RNN_Captioning.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deeplearning/classifiers/rnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeplearning/classifiers/rnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deeplearning/rnn_layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeplearning/rnn_layers.py" afterDir="false" />
@@ -18,23 +17,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deeplearning/rnn_layers.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deeplearning/classifiers/rnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="318" column="27" selection-start-line="318" selection-start-column="27" selection-end-line="318" selection-end-column="27" />
+            <state relative-caret-position="489">
+              <caret line="225" column="59" selection-start-line="225" selection-start-column="59" selection-end-line="225" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/deeplearning/classifiers/rnn.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deeplearning/rnn_layers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="226" column="22" selection-start-line="226" selection-start-column="22" selection-end-line="226" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2269">
+              <caret line="263" selection-start-line="263" selection-end-line="263" />
             </state>
           </provider>
         </entry>
@@ -53,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -124,7 +123,7 @@
       <workItem from="1551475673498" duration="113000" />
       <workItem from="1552167659837" duration="6000" />
       <workItem from="1552176069274" duration="8713000" />
-      <workItem from="1552248689791" duration="808000" />
+      <workItem from="1552248689791" duration="5456000" />
     </task>
     <task id="LOCAL-00001" summary="updated requirements to the latest versions">
       <created>1552178504361</created>
@@ -140,17 +139,23 @@
       <option name="project" value="LOCAL" />
       <updated>1552180066473</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finished implementing part 1">
+      <created>1552249829762</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552249829762</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13401000" />
+    <option name="totallyTimeSpent" value="18049000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="777" height="800" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332796" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24474959" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -179,7 +184,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated requirements to the latest versions" />
     <MESSAGE value="added Google Cloud instructions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Google Cloud instructions" />
+    <MESSAGE value="finished implementing part 1" />
+    <MESSAGE value="finished implementing part 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished implementing part 2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/requirements.txt">
@@ -208,15 +215,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deeplearning/rnn_layers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="318" column="27" selection-start-line="318" selection-start-column="27" selection-end-line="318" selection-end-column="27" />
+        <state relative-caret-position="-2269">
+          <caret line="263" selection-start-line="263" selection-end-line="263" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/deeplearning/classifiers/rnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="226" column="22" selection-start-line="226" selection-start-column="22" selection-end-line="226" selection-end-column="22" />
+        <state relative-caret-position="489">
+          <caret line="225" column="59" selection-start-line="225" selection-start-column="59" selection-end-line="225" selection-end-column="59" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

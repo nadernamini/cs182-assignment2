@@ -305,13 +305,13 @@ def lstm_step_backward(dnext_h, dnext_c, cache):
     dnext_h_tanh = dnext_h * o
     # Derivative of the derivative of next_h w.r.t. tanh(next_c) w.r.t next_c
     dtanh = dnext_h_tanh * (1 - np.square(np.tanh(next_c)))
-    # Derivative of prev_c
+    # Derivative of prev_c (combines derivatives from both next_c and next_h)
     dprev_c = f * (dnext_c + dtanh)
-    # Partial Derivative of f
+    # Partial Derivative of f (combines derivatives from both next_c and next_h)
     df = prev_c * (dnext_c + dtanh)
-    # Partial Derivative of i
+    # Partial Derivative of i (combines derivatives from both next_c and next_h)
     di = g * (dnext_c + dtanh)
-    # Partial Derivative of g
+    # Partial Derivative of g (combines derivatives from both next_c and next_h)
     dg = i * (dnext_c + dtanh)
     # Using the derivative of sigmoid/tanh to find the derivative of i, f, o, g w.r.t a_i, a_f, a_o, a_g resp.
     da_i, da_f, da_o, da_g = i * (1 - i) * di, f * (1 - f) * df, o * (1 - o) * do, (1 - np.square(g)) * dg
