@@ -2,9 +2,10 @@ from __future__ import print_function, division
 from builtins import range
 from builtins import object
 import numpy as np
+import nltk
 
 from deeplearning import optim
-from deeplearning.coco_utils import sample_coco_minibatch
+from deeplearning.coco_utils import sample_coco_minibatch, decode_captions
 
 
 class CaptioningSolver(object):
@@ -157,6 +158,42 @@ class CaptioningSolver(object):
             self.model.params[p] = next_w
             self.optim_configs[p] = next_config
 
+    def BLEU_score(self, gt_caption, sample_caption):
+        """
+        gt_caption: string, ground-truth caption
+        sample_caption: string, your model's predicted caption
+        Returns unigram BLEU score.
+        """
+        reference = [x for x in gt_caption.split(' ')
+                     if ('<END>' not in x and '<START>' not in x and '<UNK>' not in x)]
+        hypothesis = [x for x in sample_caption.split(' ')
+                      if ('<END>' not in x and '<START>' not in x and '<UNK>' not in x)]
+        BLEUscore = nltk.translate.bleu_score.sentence_bleu([reference], hypothesis, weights = [1])
+        return BLEUscore
+
+    def evaluate_model(self, batch_size=1000):
+        """
+        self: CaptioningSolver object
+        Prints unigram BLEU score averaged over 1000 training and val examples.
+        """
+        BLEUscores = {}
+        for split in ['train', 'val']:
+            minibatch = sample_coco_minibatch(self.data, split=split, batch_size=batch_size)
+            gt_captions, features, urls = minibatch
+            gt_captions = decode_captions(gt_captions, self.data['idx_to_word'])
+
+            sample_captions = self.model.sample(features)
+            sample_captions = decode_captions(sample_captions, self.data['idx_to_word'])
+
+            total_score = 0.0
+            for gt_caption, sample_caption, url in zip(gt_captions, sample_captions, urls):
+                total_score += self.BLEU_score(gt_caption, sample_caption)
+
+            BLEUscores[split] = total_score / len(sample_captions)
+
+        for split in BLEUscores:
+            print('Average BLEU score for %s: %f' % (split, BLEUscores[split]))
+
     # TODO: This does nothing right now; maybe implement BLEU?
     def check_accuracy(self, X, y, num_samples=None, batch_size=100):
         """
@@ -217,15 +254,16 @@ class CaptioningSolver(object):
 
             # At the end of every epoch, increment the epoch counter and decay the
             # learning rate.
+            # Check train and val accuracy on the first iteration, the last
+            # iteration, and at the end of each epoch.
+            # Implement some logic to check Bleu on validation set periodically
             epoch_end = (t + 1) % iterations_per_epoch == 0
             if epoch_end:
                 self.epoch += 1
                 for k in self.optim_configs:
                     self.optim_configs[k]['learning_rate'] *= self.lr_decay
+                self.evaluate_model()
 
-            # Check train and val accuracy on the first iteration, the last
-            # iteration, and at the end of each epoch.
-            # TODO: Implement some logic to check Bleu on validation set periodically
 
         # At the end of training swap the best params into the model
         # self.model.params = self.best_params

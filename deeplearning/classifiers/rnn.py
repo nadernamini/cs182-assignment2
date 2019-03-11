@@ -149,11 +149,15 @@ class CaptioningRNN(object):
         #################
         # Backward Pass #
         #################
-        dx, grads['W_vocab'], grads['b_vocab'] = temporal_affine_backward(dx, cache_taff)
-        dx, dh0, grads['Wx'], grads['Wh'], grads['b'] = {'rnn': rnn_backward,
+        dx, gW, gb = temporal_affine_backward(dx, cache_taff)
+        grads['W_vocab'], grads['b_vocab'] = np.clip(gW, None, 5.), np.clip(gb, None, 5.)
+        dx, dh0, gWx, gWh, gb = {'rnn': rnn_backward,
                                                          'lstm': lstm_backward}[self.cell_type](dx, cache_rnn)
-        grads['W_embed'] = word_embedding_backward(dx, cache_w)
-        dx, grads['W_proj'], grads['b_proj'] = affine_backward(dh0, cache_aff)
+        grads['Wx'], grads['Wh'], grads['b'] = np.clip(gWx, None, 5.), np.clip(gWh, None, 5.), np.clip(gb, None, 5.)
+        gW = word_embedding_backward(dx, cache_w)
+        grads['W_embed'] = np.clip(gW, None, 5.)
+        dx, gW, gb = affine_backward(dh0, cache_aff)
+        grads['W_proj'], grads['b_proj'] = np.clip(gW, None, 5.), np.clip(gb, None, 5.)
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
