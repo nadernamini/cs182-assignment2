@@ -1,3 +1,9 @@
 *.swp
 *.pyc
 .env/*
+deeplearning/datasets/coco_captioning
+deeplearning/datasets/imagenet_val_25.npz
+deeplearning/datasets/squeezenet.ckpt.data-00000-of-00001
+deeplearning/datasets/squeezenet.ckpt.index
+deeplearning/datasets/squeezenet.ckpt.meta
+deeplearning/datasets/imagenet_val_25.npz.1
