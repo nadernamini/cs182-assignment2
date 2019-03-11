@@ -72,6 +72,25 @@ deactivate                       # Exit the virtual environment
 Note that every time you want to work on the assignment, you should run `source .env/bin/activate` (from within your `assignment2` folder) to re-activate the virtual environment, and `deactivate` again whenever you are done.
 
 # Working on the assignment:
+## Google Cloud `Jupyter Notebook` Setup
+Connect to VM instance using:
+```bash
+ssh -i ~/.ssh/id_rsa nader@35.203.146.27
+```
+Start the `Jupyter Notebook` server using:
+```bash
+jupyter notebook --no-browser --port=8080
+```
+On your local machine, setup a SSH tunnel to the remote machine:
+```bash
+ssh -i ~/.ssh/id_rsa -N -L 8080:localhost:8080 nader@35.203.146.27
+```
+Then, navigate to the following URL to access the Notebook server which can be unlocked with the token provided by the 
+remote machine when you created the server:
+```html
+http://localhost:8080/
+```
+
 ### Get the code as a zip file [here](https://bcourses.berkeley.edu/courses/1478831/files/74600710/download?wrap=1).
 ## Download data:
 Once you have the starter code (regardless of which method you choose above), you will need to download the COCO captioning data, pretrained SqueezeNet model (TensorFlow-only), and a few ImageNet validation images. Run the following from the `assignment2` directory:

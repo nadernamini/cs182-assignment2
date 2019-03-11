@@ -74,7 +74,6 @@ class CaptioningRNN(object):
         for k, v in self.params.items():
             self.params[k] = v.astype(self.dtype)
 
-
     def loss(self, features, captions):
         """
         Compute training-time loss for the RNN. We input image features and
@@ -117,7 +116,7 @@ class CaptioningRNN(object):
 
         loss, grads = 0.0, {}
         ############################################################################
-        # TODO: Implement the forward and backward passes for the CaptioningRNN.   #
+        # Implement the forward and backward passes for the CaptioningRNN.         #
         # In the forward pass you will need to do the following:                   #
         # (1) Use an affine transformation to compute the initial hidden state     #
         #     from the image features. This should produce an array of shape (N, H)#
@@ -137,13 +136,33 @@ class CaptioningRNN(object):
         # defined above to store loss and gradients; grads[k] should give the      #
         # gradients for self.params[k].                                            #
         ############################################################################
-        pass
+        ################
+        # Forward Pass #
+        ################
+        h0, cache_aff = affine_forward(features, W_proj, b_proj)
+        out, cache_w = word_embedding_forward(captions_in, W_embed)
+        out, cache_rnn = {'rnn': rnn_forward, 'lstm': lstm_forward}[self.cell_type](out, h0, Wx, Wh, b)
+        out, cache_taff = temporal_affine_forward(out, W_vocab, b_vocab)
+
+        loss, dx = temporal_softmax_loss(out, captions_out, mask, verbose=False)
+
+        #################
+        # Backward Pass #
+        #################
+        dx, gW, gb = temporal_affine_backward(dx, cache_taff)
+        grads['W_vocab'], grads['b_vocab'] = np.clip(gW, None, 5.), np.clip(gb, None, 5.)
+        dx, dh0, gWx, gWh, gb = {'rnn': rnn_backward,
+                                                         'lstm': lstm_backward}[self.cell_type](dx, cache_rnn)
+        grads['Wx'], grads['Wh'], grads['b'] = np.clip(gWx, None, 5.), np.clip(gWh, None, 5.), np.clip(gb, None, 5.)
+        gW = word_embedding_backward(dx, cache_w)
+        grads['W_embed'] = np.clip(gW, None, 5.)
+        dx, gW, gb = affine_backward(dh0, cache_aff)
+        grads['W_proj'], grads['b_proj'] = np.clip(gW, None, 5.), np.clip(gb, None, 5.)
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
 
         return loss, grads
-
 
     def sample(self, features, max_length=30):
         """
@@ -179,7 +198,7 @@ class CaptioningRNN(object):
         W_vocab, b_vocab = self.params['W_vocab'], self.params['b_vocab']
 
         ###########################################################################
-        # TODO: Implement test-time sampling for the model. You will need to      #
+        # Implement test-time sampling for the model. You will need to            #
         # initialize the hidden state of the RNN by applying the learned affine   #
         # transform to the input image features. The first word that you feed to  #
         # the RNN should be the <START> token; its value is stored in the         #
@@ -199,7 +218,18 @@ class CaptioningRNN(object):
         # functions; you'll need to call rnn_step_forward or lstm_step_forward in #
         # a loop.                                                                 #
         ###########################################################################
-        pass
+        h, _ = affine_forward(features, W_proj, b_proj)
+        prev_c = np.zeros_like(h)
+        word = self._start
+        for i in range(max_length):
+            out, _ = word_embedding_forward(word, W_embed)
+            if self.cell_type == 'rnn':
+                h, _ = rnn_step_forward(out, h, Wx, Wh, b)
+            else:
+                h, prev_c, _ = lstm_step_forward(out, h, prev_c, Wx, Wh, b)
+            scores, _ = affine_forward(h, W_vocab, b_vocab)
+            captions[:, i] = np.argmax(scores, axis=1)
+            word = captions[:, i]
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
