@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afe22731-4f3f-4ce3-a7c0-a1e98c6bfa49" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/NetworkVisualization-TensorFlow-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/NetworkVisualization-TensorFlow-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetworkVisualization-TensorFlow.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/NetworkVisualization-TensorFlow.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,28 +14,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deeplearning/rnn_layers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="330" column="60" selection-start-line="330" selection-start-column="60" selection-end-line="330" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deeplearning/classifiers/squeezenet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1056" />
+            <state relative-caret-position="300">
+              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -59,6 +45,7 @@
         <option value="$PROJECT_DIR$/deeplearning/rnn_layers.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/deeplearning/classifiers/squeezenet.py" />
       </list>
     </option>
   </component>
@@ -139,7 +126,7 @@
       <workItem from="1551475673498" duration="113000" />
       <workItem from="1552167659837" duration="6000" />
       <workItem from="1552176069274" duration="8713000" />
-      <workItem from="1552248689791" duration="8198000" />
+      <workItem from="1552248689791" duration="9125000" />
     </task>
     <task id="LOCAL-00001" summary="updated requirements to the latest versions">
       <created>1552178504361</created>
@@ -176,11 +163,25 @@
       <option name="project" value="LOCAL" />
       <updated>1552257563601</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added requirements for tf and torch">
+      <created>1552262363387</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552262363387</updated>
+    </task>
+    <task id="LOCAL-00007" summary="updated formatting">
+      <created>1552262439367</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1552262439367</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20791000" />
+    <option name="totallyTimeSpent" value="21718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -218,7 +219,9 @@
     <MESSAGE value="finished implementing part 1" />
     <MESSAGE value="finished implementing part 2" />
     <MESSAGE value="added comments to part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments to part 2" />
+    <MESSAGE value="added requirements for tf and torch" />
+    <MESSAGE value="updated formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated formatting" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -255,13 +258,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deeplearning/rnn_layers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="330" column="60" selection-start-line="330" selection-start-column="60" selection-end-line="330" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements_tf.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -269,15 +265,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deeplearning/classifiers/squeezenet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1056" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        <state relative-caret-position="201">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deeplearning/rnn_layers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="317" column="16" selection-start-line="317" selection-start-column="16" selection-end-line="317" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deeplearning/classifiers/squeezenet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
         </state>
       </provider>
     </entry>
