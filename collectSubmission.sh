@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 files="LSTM_Captioning.ipynb
 NetworkVisualization-PyTorch.ipynb
 NetworkVisualization-TensorFlow.ipynb
