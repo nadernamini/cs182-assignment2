@@ -99,6 +99,9 @@ class CaptioningSolver(object):
         self.lr_decay = kwargs.pop('lr_decay', 1.0)
         self.batch_size = kwargs.pop('batch_size', 100)
         self.num_epochs = kwargs.pop('num_epochs', 10)
+        self.evaluate = False
+        if kwargs.pop('evaluate', False):
+            self.evaluate = True
 
         self.print_every = kwargs.pop('print_every', 10)
         self.verbose = kwargs.pop('verbose', True)
@@ -262,7 +265,8 @@ class CaptioningSolver(object):
                 self.epoch += 1
                 for k in self.optim_configs:
                     self.optim_configs[k]['learning_rate'] *= self.lr_decay
-                self.evaluate_model()
+                if self.evaluate:
+                    self.evaluate_model()
 
 
         # At the end of training swap the best params into the model
