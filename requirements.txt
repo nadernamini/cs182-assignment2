@@ -49,6 +49,6 @@ terminado==0.8.1
 tornado==6.0.1
 traitlets==4.3.2
 h5py==2.9.0
-tensorflow==1.13.1
+tensorflow==1.15.4
 torch==1.0.1.post2
 torchvision==0.2.2.post3
