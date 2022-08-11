@@ -26,7 +26,7 @@ jupyter-console==4.0.3
 jupyter-core==4.4.0
 matplotlib==3.0.3
 mistune==2.0.3
-nbconvert==5.4.1
+nbconvert==6.3.0
 nbformat==4.4.0
 nltk==3.6.6
 notebook==6.4.12
